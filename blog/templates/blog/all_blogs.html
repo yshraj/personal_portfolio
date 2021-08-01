@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Site Metas -->
+    <title>Yash Darji</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'portfolio/Teal and Orange Boxes Art & Design Logo.png' %}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'portfolio/Teal and Orange Boxes Art & Design Logo.png' %}">
+        <!-- All core CSS -->
+    <link href="{% static 'portfolio/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'portfolio/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'portfolio/css/all.css' %}" rel="stylesheet">
+    <link href="{% static 'portfolio/style.css' %}" rel="stylesheet">
+    <link href="{% static 'portfolio/css/colors.css' %}" rel="stylesheet">
+
+    <link href="{% static 'portfolio/css/responsive.css' %}" rel="stylesheet">
+
+
+
+</head>
+<body>
+<!--{% load static %}
+<h1>Blogs from Yash Darji</h1>
+
+<h2>Yash has written {{ blogs.count }} blogs </h2>
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}">
+
+   <h2>{{ blog.title }}</h2></a>
+
+   <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
+   <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
+{% endfor %}-->
+
+
+
+{% block content %}
+
+<h1 id="blogtitle" class="font-weight-bold text-center">Blog</h1>
+
+<h3 class="text-center mb-5">Yash has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3>
+
+{% for blog in blogs %}
+<div class="row justify-content-center my-3">
+  <div class="col-md-10">
+    <a href="{% url 'blog:detail' blog.id %}">
+      <h2>{{ blog.title }}</h2>
+    </a>
+    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>
+    <h4>{{ blog.description|striptags|truncatechars:100 }}</h4>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+</body>
